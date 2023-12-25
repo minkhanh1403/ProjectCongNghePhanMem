@@ -1,6 +1,6 @@
 from flask import render_template, request
 import  dao
-from saleappv1.app import app
+from ProjectCNPM.app import app
 
 
 @app.route('/')
