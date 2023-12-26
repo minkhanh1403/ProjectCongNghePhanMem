@@ -12,9 +12,11 @@ def index():
 
     return  render_template('index.html',cate = cates, product = products)
 
-@app.route('/products/<id>')
-def details(id):
+@app.route('/details')
+def details():
     return render_template('details.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+

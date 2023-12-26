@@ -1,4 +1,5 @@
-
+from ProjectCNPM.app.models import Category, detail
+from ProjectCNPM.app import app
 
 def load_categories():
     return[{
@@ -10,35 +11,21 @@ def load_categories():
     }]
 
 
-def load_products(kw=None):
-    products = [{
-        'id':1,
-        'name':'ipad 02 promax',
-        'price':2000000,
-        'image':"https://www.apple.com/newsroom/images/2023/09/apple-debuts-iphone-15-and-iphone-15-plus/article/Apple-iPhone-15-lineup-hero-230912_inline.jpg.large.jpg"
-    },{
-        'id':2,
-        'name':'iphone 15 promax',
-        'price':2000000,
-        'image':"https://www.apple.com/newsroom/images/2023/09/apple-debuts-iphone-15-and-iphone-15-plus/article/Apple-iPhone-15-lineup-hero-230912_inline.jpg.large.jpg"
-    },{
-        'id':1,
-        'name':'iphone 15 promax',
-        'price':2000000,
-        'image':"https://www.apple.com/newsroom/images/2023/09/apple-debuts-iphone-15-and-iphone-15-plus/article/Apple-iPhone-15-lineup-hero-230912_inline.jpg.large.jpg"
-    },{
-        'id':1,
-        'name':'iphone 15 promax',
-        'price':2000000,
-        'image':"https://www.apple.com/newsroom/images/2023/09/apple-debuts-iphone-15-and-iphone-15-plus/article/Apple-iPhone-15-lineup-hero-230912_inline.jpg.large.jpg"
-    },{
-        'id':1,
-        'name':'iphone 15 promax',
-        'price':2000000,
-        'image':"https://www.apple.com/newsroom/images/2023/09/apple-debuts-iphone-15-and-iphone-15-plus/article/Apple-iPhone-15-lineup-hero-230912_inline.jpg.large.jpg"
-    }]
+def load_products(kw=None, cate_id=None, page=None):
+    products = detail.query
 
     if kw:
-        products = [p for p in products if p['name'].find(kw) >= 0]
+        products = products.filter(detail.name.contains(kw))
 
-    return products
+    if cate_id:
+        products = products.filter(detail.category_id.__eq__(cate_id))
+
+    if page:
+        page = int(page)
+        page_size = app.config['PAGE_SIZE']
+        start = (page - 1)*page_size
+
+        return products.slice(start, start + page_size)
+
+    return products.all()
+
