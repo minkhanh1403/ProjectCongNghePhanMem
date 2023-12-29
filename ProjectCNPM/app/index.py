@@ -41,6 +41,7 @@ def get_user(user_id):
 
 
 if __name__ == '__main__':
+    from ProjectCNPM.app import admin #minh
     app.run(debug=True)
 
 
