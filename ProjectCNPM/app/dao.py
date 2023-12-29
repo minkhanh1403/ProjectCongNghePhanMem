@@ -29,3 +29,5 @@ def load_products(kw=None, cate_id=None, page=None):
 
     return products.all()
 
+# def load_slides():
+#     return Slide.query.all()

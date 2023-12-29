@@ -1,5 +1,5 @@
 from flask import render_template, request
-import  dao
+import dao
 from ProjectCNPM.app import app
 
 
@@ -9,8 +9,8 @@ def index():
 
     cates = dao.load_categories()
     products = dao.load_products(kw=kw)
-
-    return  render_template('index.html',cate = cates, product = products)
+    # slides = dao.load_slides()
+    return  render_template('index.html',cate = cates, product=products)
 
 @app.route('/details')
 def details():
