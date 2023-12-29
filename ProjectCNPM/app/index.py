@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 from flask import render_template, request, redirect, session, jsonify
 import dao
 from ProjectCNPM.app import app, login
 from flask_login import login_user
+=======
+from flask import render_template, request
+import dao
+from ProjectCNPM.app import app
+>>>>>>> df15d6d16bd57f13e543e1eb10febf652c7eb702
 
 
 @app.route('/index')
@@ -18,6 +24,7 @@ def details():
 
     cates = dao.load_categories()
     products = dao.load_products(kw=kw)
+<<<<<<< HEAD
 
     return render_template('details.html', cate=cates, product=products)
 
@@ -38,6 +45,10 @@ def admin_login():
 @login.user_loader
 def get_user(user_id):
     return dao.get_user_by_id(user_id)
+=======
+    # slides = dao.load_slides()
+    return  render_template('index.html',cate = cates, product=products)
+>>>>>>> df15d6d16bd57f13e543e1eb10febf652c7eb702
 
 
 if __name__ == '__main__':
