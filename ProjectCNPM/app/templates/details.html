@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Chi tiet san pham</h1>
-</body>
-</html>
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<section class="container">
+    <div class="row ">
+        {% for p in product%}
+        <div class="col-xs-12 col-md-4 mt-5 ">
+            <div class="overflow-hidden">
+                <img class="card-img-top img-fluid w-100 h-100" src="{{p.image}}" alt="">
+            </div>
+            <div class="p-4 text-center border border-5 border-light border-top-0">
+                <h4 class="mb-3">{{p.name}}</h4>
+                <a href="/products/{{p.id}}" class="btn btn-primary">Xem chi tiết</a>
+                <a href="rent" class="btn btn-primary">Đặt phòng</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+{% endblock %}
