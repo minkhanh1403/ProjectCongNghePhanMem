@@ -10,7 +10,6 @@ def load_categories():
         'name':'Tablet'
     }]
 
-
 def load_products(kw=None, cate_id=None, page=None):
     products = detail.query
 
@@ -23,11 +22,20 @@ def load_products(kw=None, cate_id=None, page=None):
     if page:
         page = int(page)
         page_size = app.config['PAGE_SIZE']
-        start = (page - 1)*page_size
-
+        start = (page - 1) * page_size
         return products.slice(start, start + page_size)
 
     return products.all()
 
-# def load_slides():
-#     return Slide.query.all()
+
+def load_rooms(checkin=None, checkout=None):
+    products = detail.query
+
+    if checkin is not None and checkout is not None:
+        products = products.filter((checkin < detail.checkin and checkout < detail.checkin)
+                                   and (checkin > detail.checkout and checkout > detail.checkout))
+
+    return products.all()
+
+
+

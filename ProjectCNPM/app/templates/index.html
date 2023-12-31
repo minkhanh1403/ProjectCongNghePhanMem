@@ -43,51 +43,24 @@
     </button>
 </div>
 
+<div class="container mt-5">
+  <h2>Tìm kiếm phòng trống</h2>
 
-<!--BOOKING-->
-<section class="container mt-5">
-    <form class="row d-flex" method="get" action="/">
-        <div class="col-xs-12 col-md-4">
-            <div class="row">
-                <div class="mb-2">
-                    <label for="date" class="col-1 col-form-label d-inline">Check-in</label>
-                </div>
-                <div class="col-10 ">
-                    <div class="input-group date" id="datepickerin">
-                        <input type="text" class="form-control" id="date" name="checkin"/>
-                        <span class="input-group-append">
-                    <span class="input-group-text bg-light d-block">
-                        <i class="fa fa-calendar"></i>
-                    </span>
-                </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <form method="get">
+    <div class="mb-3">
+      <label for="checkInDate" class="form-label">Check-in Date</label>
+      <input type="date" class="form-control" id="checkInDate" name="checkInDate">
+    </div>
 
-        <div class="col-xs-12 col-md-4">
-            <div class="row">
-                <div class="mb-2">
-                    <label for="date" class="col-1 col-form-label d-inline">Check-out</label>
-                </div>
-                <div class="col-10">
-                    <div class="input-group date" id="datepickerout">
-                        <input type="text" class="form-control" id="date" name="checkout"/>
-                        <span class="input-group-append">
-                    <span class="input-group-text bg-light d-block">
-                        <i class="fa fa-calendar"></i>
-                    </span>
-                </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="mb-3">
+      <label for="checkOutDate" class="form-label">Check-out Date</label>
+      <input type="date" class="form-control" id="checkOutDate" name="checkOutDate">
+    </div>
 
-        <div class="col-xs-12 col-md-4 mt-3">
-            <button type="submit" class="btn btn-outline-secondary">Booking</button>
-        </div>
-    </form>
-</section>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
 
 
 <!-- PRODUCT-->
@@ -101,7 +74,7 @@
                     <h4 class="card-title">{{p.name}}</h4>
                     <p class="card-text">{{p.price}} VND</p>
                     <a href="/products/{{p.id}}" class="btn btn-primary">Xem chi tiet</a>
-                    <a href="#" class="btn btn-primary">Dat Hang</a>
+                    <a href="/booking" class="btn btn-primary">Dat Hang</a>
                 </div>
             </div>
         </div>
