@@ -9,6 +9,7 @@ from flask_login import UserMixin
 class UserRoleEnum(enum.Enum):
     USER = 1
     ADMIN = 2
+    EMPLOYEE = 3
 
 
 class User(db.Model, UserMixin):
@@ -57,8 +58,16 @@ if __name__ == '__main__':
         u = User(name='Admin', username='admin',
                  password=str(hashlib.md5('123456'.encode('utf-8')).hexdigest()),
                  user_role=UserRoleEnum.ADMIN)
+
+        e = User(name='Employee', username='employee',
+                 password=str(hashlib.md5('123456'.encode('utf-8')).hexdigest()),
+                 user_role=UserRoleEnum.EMPLOYEE)
+
         db.session.add(u)
+        db.session.add(e)
         db.session.commit()
+
+
 
         c1 = Category(name='Single room')
         c2 = Category(name='Twin Room')

@@ -16,14 +16,24 @@ def start():
 def details():
     kw = request.args.get('kw')
 
-    cates = dao.load_categories()
     products = dao.load_products(kw=kw)
 
-    return render_template('details.html', cate=cates, product=products)
+    return render_template('details.html',  product=products)
 
 @app.route("/login")
 def process_user_login():
+    # if request.method.__eq__('POST'):
+    #     username = request.form.get('username')
+    #     password = request.form.get('password')
+    #     user = dao.auth_user(username=username, password=password)
+    #     if user:
+    #         login_user(user=user)
+    #
+    #     next = request.args.get('net')
+    #     return redirect("/" if next is None else next)
+
     return render_template('login.html')
+
 
 @app.route('/admin/login', methods=['post'])
 def admin_login():
@@ -34,6 +44,21 @@ def admin_login():
         login_user(user=user)
 
     return redirect('/admin')
+
+
+@app.route('/employee/login', methods=['post'])
+def employee_login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    user = dao.auth_user(username=username, password=password)
+    if user:
+        login_user(user=user)
+
+    return redirect('/employee')
+
+@app.route('/employee')
+def employee_login_process():
+    return render_template('index_employee.html')
 
 @login.user_loader
 def get_user(user_id):

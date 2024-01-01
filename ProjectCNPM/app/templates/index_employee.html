@@ -1,0 +1,23 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+
+{% if current_user.is_authenticated %}
+<h1 class="text-center text-info">CHÀO MỪNG ĐẾN TRANG QUẢN TRỊ Nhân Viên!</h1>
+<h2 class="text-info">Chào {{ current_user.name }}!</h2>
+{% else %}
+<h1 class="text-center text-success">ĐĂNG NHẬP QUẢN TRỊ NHÂN VIÊN</h1>
+<form method="post" action="/employee/login">
+  <div class="mb-3 mt-3">
+    <label for="username" class="form-label">Tên đăng nhập:</label>
+    <input type="text" class="form-control" id="username" name="username" placeholder="Tên đăng nhập">
+  </div>
+  <div class="mb-3">
+    <label for="pwd" class="form-label">Mật khẩu:</label>
+    <input type="password" class="form-control" id="pwd" name="password" placeholder="Mật khẩu">
+  </div>
+  <button type="submit" class="btn btn-primary">Đăng nhập</button>
+</form>
+{% endif %}
+{% endblock %}
