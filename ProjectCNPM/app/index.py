@@ -1,7 +1,16 @@
+
 from flask import render_template, request, redirect, session, jsonify
 import dao
 from ProjectCNPM.app import app, login
 from flask_login import login_user
+from flask import render_template, request
+import dao
+from ProjectCNPM.app import app
+
+# @app.route('/')
+# def index():
+#     checkin = request.args.get('checkInDate')
+#     checkout = request.args.get('checkOutDate')
 
 
 @app.route('/index')
@@ -15,9 +24,11 @@ def start():
 @app.route('/details')
 def details():
     kw = request.args.get('kw')
-
+    cates = dao.load_categories()
+    kw = request.args.get('kw')
     products = dao.load_products(kw=kw)
-
+    # room = dao.load_rooms(checkin=checkin, checkout=checkout)
+    # return  render_template('index.html', cate=cates, product=products, room=room)
     return render_template('details.html',  product=products)
 
 @app.route("/login")
@@ -63,6 +74,14 @@ def employee_login_process():
 @login.user_loader
 def get_user(user_id):
     return dao.get_user_by_id(user_id)
+    # slides = dao.load_slides()
+
+
+
+
+@app.route('/booking')
+def booking():
+    return render_template('booking.html')
 
 
 if __name__ == '__main__':

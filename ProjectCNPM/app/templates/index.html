@@ -1,6 +1,7 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
+
 <!-- Carousel -->
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
@@ -41,6 +42,7 @@
         <span class="carousel-control-next-icon"></span>
     </button>
 </div>
+
 
 
 <!--BOOKING-->
@@ -87,6 +89,46 @@
         </div>
     </form>
 </section>
+
+<div class="container mt-5">
+  <h2>Tìm kiếm phòng trống</h2>
+
+  <form method="get">
+    <div class="mb-3">
+      <label for="checkInDate" class="form-label">Check-in Date</label>
+      <input type="date" class="form-control" id="checkInDate" name="checkInDate">
+    </div>
+
+    <div class="mb-3">
+      <label for="checkOutDate" class="form-label">Check-out Date</label>
+      <input type="date" class="form-control" id="checkOutDate" name="checkOutDate">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
+
+<!-- PRODUCT-->
+<section class="container">
+    <div class="row">
+        {% for p in product%}
+        <div class="col-xs-12 col-md-3" style="padding: 10px">
+            <div class="card">
+                <img class="card-img-top" src="{{p.image}}" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title">{{p.name}}</h4>
+                    <p class="card-text">{{p.price}} VND</p>
+                    <a href="/products/{{p.id}}" class="btn btn-primary">Xem chi tiet</a>
+                    <a href="/booking" class="btn btn-primary">Dat Hang</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
 
 <!-- Feature Start -->
 <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
