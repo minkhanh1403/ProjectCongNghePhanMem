@@ -43,6 +43,53 @@
     </button>
 </div>
 
+
+
+<!--BOOKING-->
+<section class="container mt-5">
+    <form class="row d-flex" method="get" action="/">
+        <div class="col-xs-12 col-md-4">
+            <div class="row">
+                <div class="mb-2">
+                    <label for="date" class="col-1 col-form-label d-inline">Check-in</label>
+                </div>
+                <div class="col-10 ">
+                    <div class="input-group date" id="datepickerin">
+                        <input type="text" class="form-control" id="date" name="checkin"/>
+                        <span class="input-group-append">
+                    <span class="input-group-text bg-light d-block">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+            <div class="row">
+                <div class="mb-2">
+                    <label for="date" class="col-1 col-form-label d-inline">Check-out</label>
+                </div>
+                <div class="col-10">
+                    <div class="input-group date" id="datepickerout">
+                        <input type="text" class="form-control" id="date" name="checkout"/>
+                        <span class="input-group-append">
+                    <span class="input-group-text bg-light d-block">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-4 mt-3">
+            <button type="submit" class="btn btn-outline-secondary">Booking</button>
+        </div>
+    </form>
+</section>
+
 <div class="container mt-5">
   <h2>Tìm kiếm phòng trống</h2>
 
@@ -81,6 +128,10 @@
         {% endfor %}
     </div>
 </section>
+<<<<<<< HEAD
+=======
+
+>>>>>>> af003d0ac57a7aabc857a489686754e13fc6555f
 
 <!-- Feature Start -->
 <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
