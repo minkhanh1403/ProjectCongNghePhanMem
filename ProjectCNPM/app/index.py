@@ -1,24 +1,14 @@
-<<<<<<< HEAD
 from flask import render_template, request, redirect, session, jsonify
 import dao
 from ProjectCNPM.app import app, login
 from flask_login import login_user
-=======
-from flask import render_template, request
-import dao
-from ProjectCNPM.app import app
->>>>>>> df15d6d16bd57f13e543e1eb10febf652c7eb702
 
-<<<<<<< HEAD
 @app.route('/')
 def index():
     checkin = request.args.get('checkInDate')
     checkout = request.args.get('checkOutDate')
-=======
-
-@app.route('/index')
-def index():
-    return  render_template('index.html')
+    room = dao.load_rooms(checkin=checkin, checkout=checkout)
+    return render_template('index.html', room=room)
 @app.route('/')
 def start():
     return  render_template('index.html')
@@ -27,18 +17,12 @@ def start():
 @app.route('/details')
 def details():
     kw = request.args.get('kw')
-
->>>>>>> 2fc5ee3e7533aa421ba2b927e249e9562f1fc04f
+    checkin = request.args.get('checkInDate')
+    checkout = request.args.get('checkOutDate')
     cates = dao.load_categories()
     kw = request.args.get('kw')
     products = dao.load_products(kw=kw)
-<<<<<<< HEAD
-    room = dao.load_rooms(checkin=checkin, checkout=checkout)
-    return  render_template('index.html', cate=cates, product=products, room=room)
-=======
-<<<<<<< HEAD
-
-    return render_template('details.html', cate=cates, product=products)
+    return  render_template('index.html', cate=cates, product=products)
 
 @app.route("/login")
 def process_user_login():
@@ -57,12 +41,6 @@ def admin_login():
 @login.user_loader
 def get_user(user_id):
     return dao.get_user_by_id(user_id)
-=======
-    # slides = dao.load_slides()
-    return  render_template('index.html',cate = cates, product=products)
->>>>>>> df15d6d16bd57f13e543e1eb10febf652c7eb702
->>>>>>> 2fc5ee3e7533aa421ba2b927e249e9562f1fc04f
-
 
 @app.route('/booking')
 def booking():
