@@ -4,31 +4,24 @@ import dao
 from ProjectCNPM.app import app, login
 
 
-# @app.route('/')
-#     checkin = request.args.get('checkInDate')
-#     checkout = request.args.get('checkOutDate')
-
-
 @app.route('/index')
 def index():
-    return  render_template('index.html')
+    return render_template('index.html')
 
 @app.route('/')
 def start():
-    checkin = request.args.get('checkInDate')
-    checkout = request.args.get('checkOutDate')
+    checkin = request.form.get('checkInDate')
+    checkout = request.form.get('checkOutDate')
     room = dao.load_rooms(checkin=checkin, checkout=checkout)
-    return  render_template('index.html', room=room)
+    # kw = request.args.get('kw')
+    # products = dao.load_products(kw=kw)
+    return render_template('index.html', room=room)
 
 
 @app.route('/details')
 def details():
     kw = request.args.get('kw')
-    cates = dao.load_categories()
-    kw = request.args.get('kw')
     products = dao.load_products(kw=kw)
-    # room = dao.load_rooms(checkin=checkin, checkout=checkout)
-    # return  render_template('index.html', cate=cates, product=products, room=room)
     return render_template('details.html',  product=products)
 
 @app.route("/login")
@@ -71,15 +64,24 @@ def employee_login():
 def employee_login_process():
     return render_template('index_employee.html')
 
+
 @login.user_loader
 def get_user(user_id):
     return dao.get_user_by_id(user_id)
 
     # slides = dao.load_slides()
 
-
-@app.route('/booking')
+@app.route('/booking', methods=['get', 'post'])
 def booking():
+    if request.method == 'POST':
+        name = request.args.get('name')
+        email = request.args.get('email')
+        phone = request.args.get('phone')
+        roomtype = request.args.get('roomtype')
+        comments = request.args.get('comments')
+        dao.add_booking(name=name,email=email,phone=phone,roomtype=roomtype,comments=comments)
+        return render_template('index.html')
+
     return render_template('booking.html')
 
 

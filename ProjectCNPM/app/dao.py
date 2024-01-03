@@ -1,5 +1,5 @@
-from ProjectCNPM.app.models import Category, detail, User
-from ProjectCNPM.app import app
+from ProjectCNPM.app.models import Category, detail, User, Booking
+from ProjectCNPM.app import app, db
 import hashlib
 from flask_login import current_user
 
@@ -22,15 +22,31 @@ def load_products(kw=None, cate_id=None, page=None):
     return products.all()
 
 
-
-def load_rooms(checkin=None, checkout=None):
+def load_rooms(checkin, checkout):
     products = detail.query
-    if checkin is not None and checkout is not None:
+    if checkin and checkout:
         products = products.filter((checkin < detail.checkin and checkout < detail.checkin)
                                    and (checkin > detail.checkout and checkout > detail.checkout))
     return products.all()
 
 
+def load_booking():
+    return Booking.query.all()
+
+
+def add_booking(name, email, phone, roomtype, comments):
+    bookings = load_booking()
+    b = {
+        'id': 2,
+        'name': name,
+        'email': email,
+        'phone': phone,
+        'roomtype': roomtype,
+        'comments': comments
+    }
+    db.session.add(b)
+    db.session.commit()
+    return db
 
 def get_user_by_id(user_id):
     return User.query.get(user_id)
@@ -40,8 +56,6 @@ def auth_user(username, password):
     password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
     return User.query.filter(User.username.__eq__(username.strip()),
                              User.password.__eq__(password)).first()
-
-
 
 # def load_slides():
 #     return Slide.query.all()
