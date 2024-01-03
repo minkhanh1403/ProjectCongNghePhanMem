@@ -34,19 +34,19 @@ def load_booking():
     return Booking.query.all()
 
 
-def add_booking(name, email, phone, roomtype, comments):
-    bookings = load_booking()
-    b = {
-        'id': 2,
-        'name': name,
-        'email': email,
-        'phone': phone,
-        'roomtype': roomtype,
-        'comments': comments
-    }
-    db.session.add(b)
-    db.session.commit()
-    return db
+# def add_booking(name, email, phone, roomtype, comments):
+#     bookings = load_booking()
+#     b = {
+#         'id': 2,
+#         'name': name,
+#         'email': email,
+#         'phone': phone,
+#         'roomtype': roomtype,
+#         'comments': comments
+#     }
+#     db.session.add(b)
+#     db.session.commit()
+#     return db
 
 def get_user_by_id(user_id):
     return User.query.get(user_id)
