@@ -48,14 +48,14 @@ class detail(db.Model):
         return self.name
 
 
-# class Booking(db.Model):
-#     __tablename__ = 'booking'
-#     id = Column(Integer, primary_key=True, autoincrement=True)
-#     name = Column(String(50), nullable=False, unique=True)
-#     email = Column(String(50), nullable=False, unique=True)
-#     phone = Column(Integer, nullable=False)
-#     roomtype = Column(String(50), nullable=False, unique=True)
-#     comments = Column(String(300), nullable=False, unique=True)
+class Booking(db.Model):
+    __tablename__ = 'booking'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(50), nullable=False, unique=True)
+    email = Column(String(50), nullable=False, unique=True)
+    phone = Column(Integer, nullable=False)
+    roomtype = Column(String(50), nullable=False, unique=True)
+    comments = Column(String(300), nullable=False, unique=True)
 
 
 if __name__ == '__main__':
