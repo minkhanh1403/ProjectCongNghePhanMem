@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+# <<<<<<< HEAD
 import cloudinary.uploader
 from ProjectCNPM.app.models import Category, Product, User, Comment, Customer, Booking, Receipt, ReceiptDetails
-=======
-from ProjectCNPM.app.models import Category, detail, User, Booking
->>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
+# =======
+
+# >>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
 from ProjectCNPM.app import app, db
 import hashlib
 import random
@@ -28,7 +28,7 @@ def load_products(kw=None, cate_id=None, page=None):
     return products.all()
 
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 def load_customer():
     customer = Customer.query
     if customer:
@@ -119,17 +119,10 @@ def new_password(user):
     user.password = [random.randint(0, 9) for _ in range(6)]
     return user.password
 
-=======
-def load_rooms(checkin, checkout):
-    products = detail.query
-    if checkin and checkout:
-        products = products.filter((checkin < detail.checkin and checkout < detail.checkin)
-                                   and (checkin > detail.checkout and checkout > detail.checkout))
-    return products.all()
+# =======
 
 
-def load_booking():
-    return Booking.query.all()
+
 
 
 # def add_booking(name, email, phone, roomtype, comments):
@@ -145,7 +138,7 @@ def load_booking():
 #     db.session.add(b)
 #     db.session.commit()
 #     return db
->>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
+# >>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
 
 def get_user_by_id(user_id):
     return User.query.get(user_id)
@@ -157,7 +150,7 @@ def auth_user_admin(username, password, user_role='ADMIN'):
                              User.password.__eq__(password),
                              User.user_role.__eq__(user_role)).first()
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 
 def auth_user_employee(username, password, user_role='EMPLOYEE'):
     password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
@@ -217,8 +210,8 @@ def add_comment(product_id, content):
 
     return c
 
-=======
->>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
+# =======
+# >>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
 # def load_slides():
 #     return Slide.query.all()
 

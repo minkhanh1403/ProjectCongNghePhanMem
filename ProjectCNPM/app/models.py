@@ -1,10 +1,10 @@
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, Enum, Boolean, DateTime
 from sqlalchemy.orm import relationship
 from sqlalchemy.testing.pickleable import User
-<<<<<<< HEAD
+# <<<<<<< HEAD
 from datetime import datetime
-=======
->>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
+# =======
+# >>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
 from ProjectCNPM.app import db, app
 
 import enum
@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
     def __str__(self):
         return self.name
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 
 class Customer(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -50,8 +50,8 @@ class BaseModel(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     created_date = Column(DateTime, default=datetime.now())
     active = Column(Boolean, default=True)
-=======
->>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
+# =======
+# >>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
 
 class Category(db.Model):
     __tablename__ = 'category'
@@ -73,7 +73,7 @@ class Product(db.Model):
     def __str__(self):
         return self.name
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 class Room_detail(db.Model):
     _tablename_ = 'RoomDetails'
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -125,25 +125,18 @@ class ReceiptDetails(BaseModel):
     receipt_id = Column(Integer, ForeignKey(Receipt.id), nullable=False)
     product_id = Column(Integer, ForeignKey(Product.id), nullable=False)
 
-=======
+# =======
 
-class Booking(db.Model):
-    __tablename__ = 'booking'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(50), nullable=False, unique=True)
-    email = Column(String(50), nullable=False, unique=True)
-    phone = Column(Integer, nullable=False)
-    roomtype = Column(String(50), nullable=False, unique=True)
-    comments = Column(String(300), nullable=False, unique=True)
->>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
+
+# >>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
 
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
 
-<<<<<<< HEAD
-
+# <<<<<<< HEAD
+#
         import hashlib
 
         u = User(name='Admin', username='admin',
@@ -237,7 +230,7 @@ if __name__ == '__main__':
 
         db.session.add_all([r1,r2,r3,s1, s2, s3])
         db.session.commit()
-=======
+# =======
         # import hashlib
         #
         # u = User(name='Admin', username='admin',
@@ -285,4 +278,4 @@ if __name__ == '__main__':
         #              comments='adsdasdasd')
         # db.session.add(b1)
         # db.session.commit()
->>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
+# >>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
