@@ -45,55 +45,10 @@
 
 
 
-<!--BOOKING-->
-<section class="container mt-5">
-    <form class="row d-flex" method="get" action="/">
-        <div class="col-xs-12 col-md-4">
-            <div class="row">
-                <div class="mb-2">
-                    <label for="date" class="col-1 col-form-label d-inline">Check-in</label>
-                </div>
-                <div class="col-10 ">
-                    <div class="input-group date" id="datepickerin">
-                        <input type="text" class="form-control" id="date" name="checkin"/>
-                        <span class="input-group-append">
-                    <span class="input-group-text bg-light d-block">
-                        <i class="fa fa-calendar"></i>
-                    </span>
-                </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-md-4">
-            <div class="row">
-                <div class="mb-2">
-                    <label for="date" class="col-1 col-form-label d-inline">Check-out</label>
-                </div>
-                <div class="col-10">
-                    <div class="input-group date" id="datepickerout">
-                        <input type="text" class="form-control" id="date" name="checkout"/>
-                        <span class="input-group-append">
-                    <span class="input-group-text bg-light d-block">
-                        <i class="fa fa-calendar"></i>
-                    </span>
-                </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-md-4 mt-3">
-            <button type="submit" class="btn btn-outline-secondary">Booking</button>
-        </div>
-    </form>
-</section>
-
 <div class="container mt-5">
   <h2>Tìm kiếm phòng trống</h2>
 
-  <form method="get">
+  <form method="get" action="/show">
     <div class="mb-3">
       <label for="checkInDate" class="form-label">Check-in Date</label>
       <input type="date" class="form-control" id="checkInDate" name="checkInDate">
@@ -104,7 +59,7 @@
       <input type="date" class="form-control" id="checkOutDate" name="checkOutDate">
     </div>
 
-    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+    <button type="submit" class="btn btn-primary" >Tìm kiếm</button>
   </form>
 </div>
 
@@ -113,7 +68,7 @@
 <!-- PRODUCT-->
 <section class="container">
     <div class="row">
-        {% for p in product%}
+        {% for p in room%}
         <div class="col-xs-12 col-md-3" style="padding: 10px">
             <div class="card">
                 <img class="card-img-top" src="{{p.image}}" alt="Card image">
@@ -128,10 +83,7 @@
         {% endfor %}
     </div>
 </section>
-<<<<<<< HEAD
-=======
 
->>>>>>> af003d0ac57a7aabc857a489686754e13fc6555f
 
 <!-- Feature Start -->
 <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
@@ -140,10 +92,9 @@
             <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.5s">
                 <div class="p-lg-5 ps-lg-0">
                     <div class="section-title text-start">
-                        <h1 class="display-5 mb-4">Why Choose Us</h1>
+                        <h1 class="display-5 mb-4">Tại sao bạn lại nên chọn chúng tôi</h1>
                     </div>
-                    <p class="mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
-                        diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                    <p class="mb-4 pb-2">Chúng tôi tự tin là một trong những khách sạn hàng đầu Việt Nam</p>
                     <div class="row g-4">
                         <div class="col-6">
                             <div class="d-flex align-items-center">
@@ -152,8 +103,8 @@
                                     <i class="fa fa-check fa-2x text-primary"></i>
                                 </div>
                                 <div class="ms-4">
-                                    <p class="mb-2">Quality</p>
-                                    <h5 class="mb-0">Services</h5>
+                                    <p class="mb-2">Chất lượng</p>
+                                    <h5 class="mb-0">Hàng đầu</h5>
                                 </div>
                             </div>
                         </div>
@@ -164,8 +115,8 @@
                                     <i class="fa fa-user-check fa-2x text-primary"></i>
                                 </div>
                                 <div class="ms-4">
-                                    <p class="mb-2">Creative</p>
-                                    <h5 class="mb-0">Designers</h5>
+                                    <p class="mb-2">Sáng tạo</p>
+                                    <h5 class="mb-0">Thiết kế</h5>
                                 </div>
                             </div>
                         </div>
@@ -176,8 +127,8 @@
                                     <i class="fa fa-drafting-compass fa-2x text-primary"></i>
                                 </div>
                                 <div class="ms-4">
-                                    <p class="mb-2">Free</p>
-                                    <h5 class="mb-0">Consultation</h5>
+                                    <p class="mb-2">Trọn gói</p>
+                                    <h5 class="mb-0">Nhiều ưu đãi</h5>
                                 </div>
                             </div>
                         </div>
@@ -188,8 +139,8 @@
                                     <i class="fa fa-headphones fa-2x text-primary"></i>
                                 </div>
                                 <div class="ms-4">
-                                    <p class="mb-2">Customer</p>
-                                    <h5 class="mb-0">Support</h5>
+                                    <p class="mb-2">Hỗ trợ</p>
+                                    <h5 class="mb-0">Nhiệt Tình</h5>
                                 </div>
                             </div>
                         </div>
@@ -198,7 +149,7 @@
             </div>
             <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute img-fluid w-100 h-100" src="img/feature.jpg"
+                    <img class="position-absolute img-fluid w-100 h-100" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9vbXxlbnwwfHwwfHx8MA%3D%3D"
                          style="object-fit: cover;" alt="">
                 </div>
             </div>
@@ -206,87 +157,4 @@
     </div>
 </div>
 
-<!-- Why Choose us -->
-   <div class="container-xxl py-5">
-        <div class="container">
-            <div class="section-title text-center">
-                <h1 class="display-5 mb-5">Our Services</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-1.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">General Carpentry</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-2.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Furniture Manufacturing</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-3.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Furniture Remodeling</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-4.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Wooden Floor</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-5.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Wooden Furniture</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/service-6.jpg" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Custom Work</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!-- END Why Choose us -->
 {% endblock %}

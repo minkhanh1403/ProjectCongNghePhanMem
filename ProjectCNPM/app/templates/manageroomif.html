@@ -1,0 +1,36 @@
+{% extends 'layoutemployee/base.html' %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<form class="container mt-3" method="post" >
+    <table class="table table-striped">
+        <tr>
+            <th>id</th>
+            <th>Họ và tên</th>
+            <th>Email</th>
+            <th>Số điện thoại</th>
+            <th>Ngày nhận phòng</th>
+            <th>Ngày trả phòng</th>
+            <th>Giá tiền</th>
+            <th>Lập hóa đơn</th>
+            <th>Loại phòng</th>
+        </tr>
+        {% for p in booking %}
+        <tr>
+            <td id="customerid">{{p.customerid}}</td>
+            <td id="name">{{p.name}}</td>
+            <td id="email">{{p.email}}</td>
+            <td id="phone">{{p.phone}}</td>
+            <td id="checkin">{{p.checkin}}</td>
+            <td id="checkout">{{p.checkout}}</td>
+             <td id="price">{{p.price}}</td>
+            <td id="roomtype">{{p.roomtype}}</td>
+            <td><a href="pay">Lập hóa đơn</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+
+{% endif %}
+{% endblock %}
+

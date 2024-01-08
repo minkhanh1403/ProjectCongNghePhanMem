@@ -1,0 +1,23 @@
+{% extends 'layoutemployee/base.html' %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<section class="container mt-3">
+    <table class="table table-striped">
+        <tr>
+            <th>Họ và tên</th>
+            <th>Email</th>
+            <th>Số điện thoại</th>
+        </tr>
+        {% for p in customer%}
+        <tr>
+            <td>{{p.name}}</td>
+            <td>{{p.email}}</td>
+            <td>{{p.phone}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endif %}
+{% endblock %}
+

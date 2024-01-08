@@ -1,22 +1,50 @@
 {% extends 'layout/base.html' %}
 
+{% block title %}Giỏ hàng{% endblock %}
+
 {% block content %}
-<section class="container">
-    <div class="row ">
-        {% for p in product%}
-        <div class="col-xs-12 col-md-4 mt-5 ">
-            <div class="overflow-hidden">
-                <img class="card-img-top img-fluid w-100 h-100" src="{{p.image}}" alt="">
-            </div>
-            <div class="p-4 text-center border border-5 border-light border-top-0">
-                <h4 class="mb-3">{{p.name}}</h4>
-                <a href="/products/{{p.id}}" class="btn btn-primary">Xem chi tiết</a>
-                <a href="rent" class="btn btn-primary">Đặt phòng</a>
-            </div>
-        </div>
-        {% endfor %}
+<h1 class="text-center text-info mt-1">CHI TIẾT SẢN PHẨM</h1>
+
+<div class="row">
+    <div class="col-md-5 col-xs-12">
+        <img src="{{product.image}}" class="img-fluid rounded" />
     </div>
-</section>
+    <div class="col-md-7 col-xs-12">
+        <h1>{{ product.name }}</h1>
+    </div>
+</div>
+{% if current_user.is_authenticated %}
+<div class="form-group">
+    <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Nội dung bình luận"></textarea>
+    <input type="button" onclick="addComment({{product.id}})" value="Bình luận" class="btn btn-success mt-1" />
+</div>
+{% else %}
+<p>Vui lòng <a href="/login?next=/products/{{product.id}}">đăng nhập</a> để bình luận!</p>
+{% endif %}
 
+<div class="mt-2" id="comments">
+    {% for c in comments %}
+    <div class="row alert alert-info">
+        <div class="col-md-1">
+            <img src="{{c.user.avatar}}" class="img-fluid rounded" />
+        </div>
+        <div class="col-md-11">
+            <p>{{ c.content }}</p>
+            <p>Bình luân lúc: <span class="my-date">{{ c.created_date }}</span></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"></script>
+<script>
+    window.onload = function() {
+        let dates = document.getElementsByClassName("my-date");
+        for (let d of dates)
+            d.innerText = moment(d.innerText).locale("vi").fromNow();
+    }
+</script>
+
+<script src="{{ url_for('static', filename='js/comments.js') }}"></script>
 {% endblock %}

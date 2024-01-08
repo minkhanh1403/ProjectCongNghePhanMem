@@ -1,14 +1,14 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-<div class="dropdown">
+<div class="dropdown text-center">
   <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
    Bạn đăng nhập với tư cách?
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="user">Người Dùng</a></li>
-    <li><a class="dropdown-item" href="employee">Nhân Viên</a></li>
-    <li><a class="dropdown-item" href="admin">Người Quản trị</a></li>
+    <li><a class="dropdown-item" href="user" name='USER'>Người Dùng</a></li>
+    <li><a class="dropdown-item" href="employee" name='EMPLOYEE'>Nhân Viên</a></li>
+    <li><a class="dropdown-item" href="admin" name='ADMIN'>Người Quản trị</a></li>
   </ul>
 </div>
 {% endblock %}

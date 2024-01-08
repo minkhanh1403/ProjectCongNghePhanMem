@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Đăng ký{% endblock %}
+
+{% block content %}
+<h1 class="text-center text-info mt-1">ĐĂNG KÝ NGƯỜI DÙNG</h1>
+
+{% if err_msg %}
+<div class="alert alert-danger">
+    {{err_msg}}
+</div>
+{% endif %}
+
+<form method="post" action="/signup" enctype="multipart/form-data">
+    <div class="mb-3 mt-3">
+        <label for="name">Tên của bạn</label>
+        <input type="text" class="form-control" id="name"
+               name="name" placeholder="Tên người dùng" required>
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="username">Tên đăng nhập</label>
+        <input type="text" class="form-control" id="username"
+               name="username" placeholder="Tên đăng nhập" required>
+    </div>
+     <div class="mb-3 mt-3">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email"
+               name="email" placeholder="Nhập Email của bạn!" required>
+    </div>
+    <div class="mt-3 mb-3">
+        <label for="pwd">Mật khẩu</label>
+        <input type="password" class="form-control" id="pwd"
+               name="password" placeholder="Mật khẩu" required>
+    </div>
+    <div class="mt-3 mb-3">
+        <label for="confirm">Xác nhận mật khẩu</label>
+        <input type="password" class="form-control" id="confirm"
+               name="confirm" placeholder="Xác nhận mật khẩu" required>
+    </div>
+    <div class="mt-3 mb-3">
+        <label for="avatar">Ảnh đại diện</label>
+        <input type="file" class="form-control" id="avatar"
+               name="avatar">
+    </div>
+     <div class="form-floating mt-3 mb-3">
+         <button type="submit" class="btn btn-danger">Đăng ký</button>
+     </div>
+</form>
+{% endblock %}
