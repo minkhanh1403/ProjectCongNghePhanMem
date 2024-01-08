@@ -4,6 +4,7 @@ import dao, utils
 from ProjectCNPM.app import app, login
 
 
+<<<<<<< HEAD
 
 
 @app.route('/')
@@ -23,6 +24,27 @@ def check_room():
 def product():
     kw = request.args.get('kw')
     products = dao.load_products(kw=kw)
+=======
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
+@app.route('/')
+def start():
+    checkin = request.form.get('checkInDate')
+    checkout = request.form.get('checkOutDate')
+    room = dao.load_rooms(checkin=checkin, checkout=checkout)
+    # kw = request.args.get('kw')
+    # products = dao.load_products(kw=kw)
+    return render_template('index.html', room=room)
+
+
+@app.route('/details')
+def details():
+    kw = request.args.get('kw')
+    products = dao.load_products(kw=kw)
+    return render_template('details.html',  product=products)
+>>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
 
     return render_template('Product.html', product=products)
 
@@ -254,10 +276,29 @@ def forgot():
     return render_template('forgot.html')
 
 
+
 @login.user_loader
 def get_user(user_id):
     return dao.get_user_by_id(user_id)
 
+<<<<<<< HEAD
+=======
+    # slides = dao.load_slides()
+
+@app.route('/booking', methods=['get', 'post'])
+def booking():
+    if request.method == 'POST':
+        name = request.args.get('name')
+        email = request.args.get('email')
+        phone = request.args.get('phone')
+        roomtype = request.args.get('roomtype')
+        comments = request.args.get('comments')
+        dao.add_booking(name=name,email=email,phone=phone,roomtype=roomtype,comments=comments)
+        return render_template('index.html')
+
+    return render_template('booking.html')
+
+>>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
 
 if __name__ == '__main__':
     from ProjectCNPM.app import admin  # minh

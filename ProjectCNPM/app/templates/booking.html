@@ -1,7 +1,10 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
+<<<<<<< HEAD
 {% if current_user.is_authenticated %}
+=======
+>>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
 <div class="container mt-5">
     <h2 class="mb-4">Đặt phòng khách sạn</h2>
 
@@ -53,9 +56,12 @@
         <button type="submit" class="btn btn-primary">Đặt phòng</button>
     </form>
 </div>
+<<<<<<< HEAD
 {%else %}
 <p class="text-center">Vui lòng <a href="/login">đăng nhập</a> để đặt phòng! </p>
 {% endif %}
+=======
+>>>>>>> 082d9d2436d96c5384187d9317800bc9a5b59d42
 {% endblock %}
 
 
